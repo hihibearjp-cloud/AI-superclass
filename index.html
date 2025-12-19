@@ -8,27 +8,27 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="班級小管家">
-    <meta name="theme-color" content="#FEF9F2">
+    <meta name="theme-color" content="#FFD700">
     
     <!-- 預留連結，將由 JavaScript 動態填入 -->
     <link rel="apple-touch-icon" id="ios-icon" href="">
     <link rel="icon" id="fav-icon" href="">
 
     <script>
-        // 這是您指定的圖示 (棕色背景、米色書本) 的 Base64 SVG 編碼
-        const appIconDataRobust = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjEyMCIgZmlsbD0iIzVENDAzNyIvPjxwYXRoIGQ9Ik0zNjAgMTYwVjM4MEMzNjAgMzgwIDI5MCAzNTAgMjU2IDM1MEMyMjIgMzUwIDE1MiAzODAgMTUyIDM4MFYxNjBDMTUyIDE2MCAyMjIgMTMwIDI1NiAxMzBDMjkwIDEzMCAzNjAgMTYwIDM2MCAxNjBaIiBmaWxsPSIjRkVGOUYyIi8+PHBhdGggZD0iTTI1NiAxNTBWMzc1IiBzdHJva2U9IiM1RDQwMzYiIHN0cm9rZS13aWR0aD0iMTYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg==";
+        // 新版圖示：鮮豔黃底 + 書寫中的黑板 Logo (Base64 SVG)
+        const appIconDataYellowBoard = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjEyOCIgZmlsbD0iI0ZGRDcwMCIvPjxyZWN0IHg9IjY2IiB5PSIxMDYiIHdpZHRoPSIzODAiIGhlaWdodD0iMzAwIiByeD0iMjQiIGZpbGw9IiM1RDQwMzciLz48cmVjdCB4PSI4NiIgeT0iMTI2IiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI2MCIgcng9IjEyIiBmaWxsPSIjMUI1RTIwIi8+PHBhdGggZD0iTTEzNiAyMTBjMTAtMTAgNjAtMTAgNzAgMHMxMCAyMCAwIDMwTSAxMzYgMjg1YzEwLTEwIDEwMC0xMCAxMTAgME0gMTM2IDM2MGMxMC0xMCAxNTAtMTAgMTYwIDAiIHN0cm9rZT0iI0ZGRiIgc3Ryb2tlLXdpZHRoPSIxMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIiBvcGFjaXR5PSIwLjgiLz48cGF0aCBkPSJNMzYwIDM1MGw0MC00MCIgc3Ryb2tlPSIjRkZGIiBzdHJva2Utd2lkdGg9IjE2IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4=";
 
         window.onload = function() {
             try {
                 // 1. 設定 iOS 和 瀏覽器 Icon
                 var iosLink = document.getElementById('ios-icon');
                 var favLink = document.getElementById('fav-icon');
-                if(iosLink) iosLink.href = appIconDataRobust;
-                if(favLink) favLink.href = appIconDataRobust;
+                if(iosLink) iosLink.href = appIconDataYellowBoard;
+                if(favLink) favLink.href = appIconDataYellowBoard;
 
                 // 2. 設定啟動畫面的 Logo
                 var loadingLogo = document.getElementById('loading-logo-img');
-                if(loadingLogo) loadingLogo.src = appIconDataRobust;
+                if(loadingLogo) loadingLogo.src = appIconDataYellowBoard;
 
             } catch(e) { console.log('Icon generation failed'); }
         };
@@ -42,8 +42,8 @@
         #loading-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #FEF9F2; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.5s; }
         
         /* Logo 動畫與樣式 */
-        .app-logo { width: 120px; height: 120px; border-radius: 28px; box-shadow: 0 8px 16px rgba(93, 64, 55, 0.2); margin-bottom: 24px; animation: breathe 2s infinite ease-in-out; }
-        @keyframes breathe { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .app-logo { width: 140px; height: 140px; border-radius: 35px; box-shadow: 0 10px 25px rgba(255, 193, 7, 0.4); margin-bottom: 24px; animation: bounce 2s infinite ease-in-out; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
         #error-log { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; color: red; padding: 20px; z-index: 10000; overflow: auto; font-family: monospace; font-size: 16px; white-space: pre-wrap; }
 
@@ -75,8 +75,8 @@
         <div id="loading-screen">
             <!-- 這裡會顯示您的新 Logo -->
             <img id="loading-logo-img" class="app-logo" src="" alt="App Logo" />
-            <h2 style="color: #5D4037; font-weight: bold; font-family: sans-serif;">Class Manage</h2>
-            <p style="color: #8D6E63; font-size: 0.9rem; margin-top: 5px;">啟動中...</p>
+            <h2 style="color: #5D4037; font-weight: bold; font-family: sans-serif; font-size: 1.5rem;">Class Manage</h2>
+            <p style="color: #8D6E63; font-size: 1rem; margin-top: 5px;">啟動中...</p>
         </div>
     </div>
 
